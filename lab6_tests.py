@@ -78,11 +78,11 @@ class TestCases(unittest.TestCase):
     # Part 2
     def test_swap_case_one(self):
         input = "Hello World"
-        expected_output = "hELLO wORLD"
+        expected_output = "hELLO wORLD" #example
         self.assertEqual(swap_case(input), expected_output)
     def test_swap_case_two(self):
         input = "Computer Science"
-        expected_output = "cOMPUTER sCIENCE"
+        expected_output = "cOMPUTER sCIENCE" #example
         self.assertEqual(swap_case(input), expected_output)
 
     # Part 3
