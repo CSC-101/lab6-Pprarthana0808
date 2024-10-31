@@ -1,8 +1,8 @@
 import data
 import lab6
 import unittest
-
-
+from lab6 import selection_sort_books, swap_case, str_translate, histogram
+from data import Book
 # Write your test cases for each part below.
 
 class TestCases(unittest.TestCase):
@@ -64,18 +64,56 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    def test_selection_sort_books_empty(self):
+        books = []
+        selection_sort_books(books)
+        expected = []
+        self.assertEqual(expected, books)
 
-
+    def test_selection_sort_books(self):
+        books = [Book(["F. Scott Fitzgerald"], "The Great Gatsby"), Book(["Herman Melville"], "Moby Dick"),Book(["Harper Lee"], "To Kill a Mockingbird")]
+        selection_sort_books(books)
+        expected_titles = ["Moby Dick", "The Great Gatsby", "To Kill a Mockingbird"]
+        self.assertEqual([book.title for book in books], expected_titles)
     # Part 2
-
+    def test_swap_case_one(self):
+        input = "Hello World"
+        expected_output = "hELLO wORLD" #example
+        self.assertEqual(swap_case(input), expected_output)
+    def test_swap_case_two(self):
+        input = "Computer Science"
+        expected_output = "cOMPUTER sCIENCE" #example
+        self.assertEqual(swap_case(input), expected_output)
 
     # Part 3
+    def test_str_translate_one(self):
+        input_str = 'abcdcba'
+        old_char = 'a'
+        new_char = 'x'
+        expected_output = 'xbcdcbx'
+        self.assertEqual(str_translate(input_str, old_char, new_char), expected_output)
 
-
+    def test_str_translate_two(self):
+        input_str = 'hello'
+        old_char = 'h'
+        new_char = 'm'
+        expected_output = 'mello'
+        self.assertEqual(str_translate(input_str, old_char, new_char), expected_output)
     # Part 4
+    def test_histogram_one(self):
+        paragraph = "apple banana apple orange banana apple"
+        histogram_result = histogram(paragraph)
+        self.assertEqual(histogram_result.get('grape'), None)
 
+    def test_histogram_basic(self):
+        paragraph = "apple banana apple orange banana apple"
+        histogram_result = histogram(paragraph)
+        self.assertEqual(histogram_result.get("apple"),3)
 
-
+    def test_histogram_empty(self):
+        paragraph = ""
+        histogram_result = histogram(paragraph)
+        self.assertEqual(histogram_result, {})
 
 
 if __name__ == '__main__':
